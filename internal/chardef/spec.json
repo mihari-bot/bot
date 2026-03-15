@@ -1,0 +1,163 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Chardef Spec",
+    "type": "object",
+    "properties": {
+        "chardef": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "alias": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "age": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "appearance": {
+                    "type": "string"
+                },
+                "worldview": {
+                    "type": "string"
+                },
+                "personality": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "speech_style": {
+                    "type": "string"
+                },
+                "catchphrase": {
+                    "type": "string"
+                },
+                "emotion_range": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "backstory": {
+                    "type": "string"
+                },
+                "relationship": {
+                    "type": "string"
+                },
+                "role_goal": {
+                    "type": "string"
+                },
+                "can_do": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "must_do": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "must_not_do": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "soft_boundaries": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "reply_length": {
+                    "type": "string"
+                },
+                "language_mix": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "use_action_desc": {
+                    "type": "boolean"
+                },
+                "emoji_style": {
+                    "type": "string"
+                },
+                "markdown_enabled": {
+                    "type": "boolean"
+                },
+                "trigger_words": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "secret_info": {
+                    "type": "string"
+                },
+                "example_dialogues": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "user_input": {
+                                "type": "string"
+                            },
+                            "char_reply": {
+                                "type": "string"
+                            },
+                            "note": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "user_input",
+                            "char_reply",
+                            "note"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "name",
+                "alias",
+                "age",
+                "gender",
+                "appearance",
+                "worldview",
+                "personality",
+                "speech_style",
+                "catchphrase",
+                "emotion_range",
+                "backstory",
+                "relationship",
+                "role_goal",
+                "can_do",
+                "must_do",
+                "must_not_do",
+                "soft_boundaries",
+                "reply_length",
+                "language_mix",
+                "use_action_desc",
+                "emoji_style",
+                "markdown_enabled",
+                "trigger_words",
+                "secret_info",
+                "example_dialogues"
+            ]
+        }
+    },
+    "required": [
+        "chardef"
+    ]
+}
