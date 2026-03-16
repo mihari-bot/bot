@@ -7,14 +7,9 @@
         },
         "alias": {
             "type": "array",
-            "items": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                }
-            ]
+            "items": {
+                "type": "string"
+            }
         },
         "age": {
             "type": "string"
@@ -30,23 +25,9 @@
         },
         "personality": {
             "type": "array",
-            "items": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                }
-            ]
+            "items": {
+                "type": "string"
+            }
         },
         "speech_style": {
             "type": "string"
@@ -56,26 +37,9 @@
         },
         "emotion_range": {
             "type": "array",
-            "items": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                }
-            ]
+            "items": {
+                "type": "string"
+            }
         },
         "backstory": {
             "type": "string"
@@ -88,88 +52,36 @@
         },
         "can_do": {
             "type": "array",
-            "items": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                }
-            ]
+            "items": {
+                "type": "string"
+            }
         },
         "must_do": {
             "type": "array",
-            "items": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                }
-            ]
+            "items": {
+                "type": "string"
+            }
         },
         "must_not_do": {
             "type": "array",
-            "items": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                }
-            ]
+            "items": {
+                "type": "string"
+            }
         },
         "soft_boundaries": {
             "type": "array",
-            "items": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                }
-            ]
+            "items": {
+                "type": "string"
+            }
         },
         "reply_length": {
             "type": "string"
         },
         "language_mix": {
             "type": "array",
-            "items": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                }
-            ]
+            "items": {
+                "type": "string"
+            }
         },
         "use_action_desc": {
             "type": "boolean"
@@ -182,85 +94,34 @@
         },
         "trigger_words": {
             "type": "array",
-            "items": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "string"
-                }
-            ]
+            "items": {
+                "type": "string"
+            }
         },
         "secret_info": {
             "type": "string"
         },
         "example_dialogues": {
             "type": "array",
-            "items": [
-                {
-                    "type": "object",
-                    "properties": {
-                        "user_input": {
-                            "type": "string"
-                        },
-                        "char_reply": {
-                            "type": "string"
-                        },
-                        "note": {
-                            "type": "string"
-                        }
+            "items": {
+                "type": "object",
+                "properties": {
+                    "user_input": {
+                        "type": "string"
                     },
-                    "required": [
-                        "user_input",
-                        "char_reply",
-                        "note"
-                    ]
+                    "char_reply": {
+                        "type": "string"
+                    },
+                    "note": {
+                        "type": "string"
+                    }
                 },
-                {
-                    "type": "object",
-                    "properties": {
-                        "user_input": {
-                            "type": "string"
-                        },
-                        "char_reply": {
-                            "type": "string"
-                        },
-                        "note": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "user_input",
-                        "char_reply",
-                        "note"
-                    ]
-                },
-                {
-                    "type": "object",
-                    "properties": {
-                        "user_input": {
-                            "type": "string"
-                        },
-                        "char_reply": {
-                            "type": "string"
-                        },
-                        "note": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "user_input",
-                        "char_reply",
-                        "note"
-                    ]
-                }
-            ]
+                "required": [
+                    "user_input",
+                    "char_reply",
+                    "note"
+                ]
+            }
         }
     },
     "required": [
