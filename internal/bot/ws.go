@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"net/url"
+	"time"
 
 	"github.com/coder/websocket"
 	"github.com/tidwall/gjson"
@@ -72,6 +73,7 @@ func (b *Bot) serveWS(ctx context.Context, conn *websocket.Conn) error {
 			if err != nil {
 				b.logger.Errorw("Handler错误",
 					err)
+				time.Sleep(time.Second)
 				cc.sendMessage(ctx, "呜哇！程序出了一点点意外错误呢... 💦\n"+err.Error())
 			}
 		}()

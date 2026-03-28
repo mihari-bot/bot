@@ -63,7 +63,7 @@ func (b *Bot) chat(ctx context.Context, cc *cctx) error {
 	rolePromptInMap["memories"] = []string{} // TODO: Memory
 
 	if userConfig.VoiceEnabled {
-		ttsNotice := "注意：你的所有输出会被送入TTS生成语音。请不要使用emoji，不要用括号描述动作（如（挥手）），也不要输出除对白以外的内容。"
+		ttsNotice := "注意：你的所有输出会被送入TTS生成语音。请不要使用emoji，不要用括号描述动作（如（挥手）），也不要输出除对白以外的内容。请尽可能在让用户满意的同时，保持内容的简短。"
 		if v, ok := rolePromptInMap["speech_style"]; ok {
 			if s, ok := v.(string); ok && strings.TrimSpace(s) != "" {
 				rolePromptInMap["speech_style"] = strings.TrimSpace(s) + "\n" + ttsNotice
@@ -72,6 +72,19 @@ func (b *Bot) chat(ctx context.Context, cc *cctx) error {
 			}
 		} else {
 			rolePromptInMap["speech_style"] = ttsNotice
+		}
+
+		if v, ok := rolePromptInMap["must_not_do"]; ok {
+			switch vv := v.(type) {
+			case []any:
+				rolePromptInMap["must_not_do"] = append(vv, ttsNotice)
+			case []string:
+				rolePromptInMap["must_not_do"] = append(vv, ttsNotice)
+			default:
+				rolePromptInMap["must_not_do"] = []string{ttsNotice}
+			}
+		} else {
+			rolePromptInMap["must_not_do"] = []string{ttsNotice}
 		}
 	}
 
