@@ -3,18 +3,10 @@ name: goreleaser
 on:
   workflow_dispatch:
     inputs:
-      mode:
-        type: choice
-        description: Build mode
-        required: true
-        default: snapshot
-        options:
-          - snapshot
-          - release
       tag:
         type: string
-        description: Release tag (e.g. v1.2.3). Required when mode=release
-        required: false
+        description: Release tag (e.g. v1.2.3)
+        required: true
 
 permissions:
   contents: write
@@ -48,17 +40,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Ensure tag (release mode)
-        if: ${{ inputs.mode == 'release' }}
+      - name: Ensure tag
         run: |
           set -euo pipefail
 
           tag="${{ inputs.tag }}"
-          if [ -z "${tag}" ]; then
-            echo "inputs.tag is required when mode=release" >&2
-            exit 1
-          fi
-
           git fetch --tags
 
           if git rev-parse "${tag}" >/dev/null 2>&1; then
@@ -69,18 +55,13 @@ jobs:
           git tag -a "${tag}" -m "${tag}"
           git push origin "${tag}"
 
-      - name: GoReleaser (snapshot)
-        if: ${{ inputs.mode == 'snapshot' }}
-        uses: goreleaser/goreleaser-action@v6
+      - name: Checkout tag
+        uses: actions/checkout@v4
         with:
-          distribution: goreleaser
-          version: latest
-          args: release --snapshot --clean
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ inputs.tag }}
+          fetch-depth: 0
 
-      - name: GoReleaser (release)
-        if: ${{ inputs.mode == 'release' }}
+      - name: GoReleaser
         uses: goreleaser/goreleaser-action@v6
         with:
           distribution: goreleaser
