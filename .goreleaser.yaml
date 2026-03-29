@@ -8,6 +8,8 @@
 
 version: 2
 
+project_name: mihari-bot
+
 before:
   hooks:
     # You may remove this if you don't use go modules.
@@ -16,17 +18,42 @@ before:
     - go generate ./...
 
 builds:
-  - env:
-      - CGO_ENABLED=1
+  - id: mihari-bot
+    binary: mihari-bot
+    env:
+      - CGO_ENABLED=0
     goos:
       - linux
       - windows
       - darwin
+    goarch:
+      - amd64
+      - arm64
+      - 386
+    ignore:
+      - goos: darwin
+        goarch: 386
+
+    main: ./cmd/mihari-bot
+  - id: mihari-bot-arm
+    binary: mihari-bot
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - arm
+    goarm:
+      - 6
+      - 7
 
     main: ./cmd/mihari-bot
 
 archives:
-  - formats: [tar.gz]
+  - ids:
+      - mihari-bot
+      - mihari-bot-arm
+    formats: [tar.gz]
     # this name template makes the OS and Arch compatible with the results of `uname`.
     name_template: >-
       {{ .ProjectName }}_
@@ -39,6 +66,23 @@ archives:
     format_overrides:
       - goos: windows
         formats: [zip]
+
+dockers_v2:
+  - id: mihari-bot
+    dockerfile: Dockerfile.goreleaser
+    ids:
+      - mihari-bot
+      - mihari-bot-arm
+    images:
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY }}"
+    tags:
+      - "{{ .Tag }}"
+      - latest
+    platforms:
+      - linux/amd64
+      - linux/arm64
+      - linux/arm/v7
+    disable: "{{ .IsSnapshot }}"
 
 changelog:
   sort: asc

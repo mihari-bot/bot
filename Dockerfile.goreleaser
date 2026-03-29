@@ -1,0 +1,12 @@
+FROM alpine:3.20
+
+ARG TARGETPLATFORM
+
+RUN apk add --no-cache ca-certificates tzdata && update-ca-certificates
+
+ENV TZ=UTC
+RUN ln -snf "/usr/share/zoneinfo/${TZ}" /etc/localtime && echo "${TZ}" > /etc/timezone
+
+COPY $TARGETPLATFORM/mihari-bot /usr/local/bin/mihari-bot
+
+ENTRYPOINT ["/usr/local/bin/mihari-bot"]
