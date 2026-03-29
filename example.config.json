@@ -1,0 +1,28 @@
+{
+    "db": {
+        "provider": "sqlite",
+        "dsn": "data.db3"
+    },
+    "ws": {
+        "url": "<Url>",
+        "accessToken": "<AccessToken>"
+    },
+    "voiceHttp": {
+        "addr": "0.0.0.0:18080"
+    },
+    "chat": {
+        "perCharDelay": {
+            "min": "15ms",
+            "max": "100ms"
+        },
+        "waitTime": {
+            "min": "1s",
+            "max": "10s"
+        }
+    },
+    "security": {
+        "baseapi": {
+            "allowLocal": false
+        }
+    }
+}

@@ -11,6 +11,7 @@ import (
 	"github.com/mihari-bot/bot/internal/model"
 
 	"github.com/openai/openai-go/v3"
+	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
@@ -83,6 +84,8 @@ func (b *Bot) dbInit() error {
 			return err
 		}
 		dialector = sqlite.Open(dsn)
+	case "mysql":
+		dialector = mysql.Open(dsn)
 	default:
 		return fmt.Errorf("unsupported database provider: \"%s\"", provider)
 	}
